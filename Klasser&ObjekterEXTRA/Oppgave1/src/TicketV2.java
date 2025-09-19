@@ -7,9 +7,8 @@ public class TicketV2 {
 
     public TicketV2(String name, String personNr, String destination) {
         int personNrLength = personNr.length();
-        int nameLength = name.length();
 
-        if (personNrLength >= 11 && nameLength >= 2) {
+        if (personNrLength == 11) {
             this.name = name;
             this.personNr = personNr;
             this.destination = destination;
@@ -29,9 +28,17 @@ public class TicketV2 {
         return personNr.substring(0, 6);
     }
 
+    public boolean checkPersonNr(String personNr) {
+        return this.personNr.equals(personNr);
+    }
+
     public void setPassengerInfo(String name, String personNr) {
-        this.name = name;
-        this.personNr = personNr;
+        if (personNr.length() == 11) {
+            this.name = name;
+            this.personNr = personNr;
+        } else {
+            showMessageDialog(null, "Warning: Fødselnr hadde feil lengde. \n Passasjer detaljer ble ikke endret");
+        }
     }
 
     public String getDestination() {

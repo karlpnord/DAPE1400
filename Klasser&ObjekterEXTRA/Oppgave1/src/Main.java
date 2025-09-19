@@ -8,5 +8,14 @@ public class Main {
 
         TicketV2 ticket1 = new TicketV2(navn, personNr, destinasjon);
         ticket1.printTicketInfo();
+
+        String passportPersonNr = showInputDialog("Checking counter, please input passport person nr");
+        boolean personNrIsCorrect = ticket1.checkPersonNr(passportPersonNr);
+
+        if (personNrIsCorrect) {
+            showMessageDialog(null,"Welcome aboard");
+        } else {
+            showMessageDialog(null, "Call PST");
+        }
     }
 }
